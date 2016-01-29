@@ -1,30 +1,36 @@
 a.
 fork(	);
-Fork is a system call. According to the man page for this call, fork primarily creates a child process that is roughly a copy of its parent
-process except it gets its own Process ID (PID) and some attributes such as file descriptors. The fork() call is important generally because
-in multi-processor computers, a process must be able to fork itself in order to run other programs. Additionally, it is important to note
-that a child process never returns its PID value. According to a 1971 abstract by Ritchie and Thompson called the Unix Timesharing System, 
-the child process should return 0 if successful. If unsuccessful, the parent process usually returns -1, the child process is not created, and any 
-additional necessary error handling occurs. In the real-world, this can be likened (harshly) to a parent-child relationship when a child is successfully
-born, it returns nothing of monetary value to the outside world, i.e. "0".    
+Fork is a system call. According to the man page for this call, fork primarily creates a child process that is 
+roughly a copy of its parent process except it gets its own Process ID (PID) and some attributes such as 
+file descriptors. The fork() call is important generally because in multi-processor computers, a process 
+must be able to fork itself in order to run other programs. Additionally, it is important to note that a child 
+process never returns its PID value.
+
+According to a 1971 abstract by Ritchie and Thompson called the Unix Timesharing System, the child process 
+should return 0 if successful. If unsuccessful, the parent process usually returns -1, the child process is not created, 
+and any additional necessary error handling occurs. In the real-world, this can be likened (harshly) to a parent-child relationship when a child is successfully born, it returns nothing of monetary value to the outside world, i.e. "0".    
 
 b.
 exit(	);
-Exit is a system call. Exit immediately terminates a program or process when called. The syntax for the exit call is actually
-exit(status). Once this call is executed, the status is transmitted to parent process. When this occurs, there are 3 possible options:
+Exit is a system call. Exit immediately terminates a program or process when called. 
+The syntax for the exit call is actually exit(status). 
+Once this call is executed, the status is transmitted to parent process. 
+When this occurs, there are 3 possible options:
 1. If the parent has set SA_NOCLDWAIT -> exiting process dies
 2. Parent has set the SIGCHLD handler to SIG_IGN -> exiting process dies
-3. Parent process is not waiting and not indicating any action on the exit process -> the exiting process becomes a "zombie" process. 
+3. Parent process is not waiting and not indicating any action on the exit process -> the exiting process 
+becomes a "zombie" process. 
 
 c.
 getpid(	);
-getpid is a system call. This call gets the process identification (according to "man 2 getpid"). Specifically, it gets the process ID of the 
-calling process. It is always successful and has no return value.  
+getpid is a system call. This call gets the process identification (according to "man 2 getpid"). 
+Specifically, it gets the process ID of the calling process. 
+It is always successful and has no return value.  
 
 d.
 getppid( );
-getppid is a system call. This call is similar to getpid, except it gets the process ID of the parent of the calling process. As with getpid, it also
-is always successful and returns nothing. 
+getppid is a system call. This call is similar to getpid, except it gets the process ID of the 
+parent of the calling process. As with getpid, it also is always successful and returns nothing. 
 
 e.
 wait(	);
