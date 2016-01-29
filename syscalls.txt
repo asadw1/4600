@@ -24,11 +24,17 @@ calling process. It is always successful and has no return value.
 d.
 getppid( );
 getppid is a system call. This call is similar to getpid, except it gets the process ID of the parent of the calling process. As with getpid, it also
-is always successful and 
+is always successful and returns nothing. 
 
 e.
 wait(	);
-wait is a system call
+wait is a system call. The Linux programmer's manual describes it as "wait for process to change state". 
+Furthermore, wait() gets information about the child process' state and returns immediately if the state changes. 
+So a state change can defined as either:
+ 1. Terminated child process (as described in exit())
+ 2. Child process is stopped by a signal
+ 3. Child process is resumed by a signal
+
 f.
 kill(	);
 kill is a system call
