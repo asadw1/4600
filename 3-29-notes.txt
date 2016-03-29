@@ -26,5 +26,69 @@ number of resources R_j, R_k,...
 2. Acquisition-> A process P_i may ACQUIRE resources that have previously been 
 requested units are available for acquistion.
 
+------------------------------------------------------
 
+Deadlock Detection:
+
+Graph Reduction-> reducing number of edges with a graph algorithm
+
+- node z is a SINK if there are no edges (z,b)
+- z is an *isolated node* if there are no edges 
+- reachable set of a node z: z = { b | there is a path from z to b } 
+- knot, K: non-empty set of nodes with the property that for all nodes z in K, 
+reachable(z) = K. 
+1. In a digraph (directed graph), knot = cycle
+2. No node in a knot is a sink 
+3. What does iff mean? If and only if, meaning that a condition MUST be 
+met in order for control flow to proceed. 
+4. If in a graph, a resource node R1 points back to a process P1, then P1 PRODUCES 
+From textbook...
+
+Resource Graph Reduction Algorithm:
+
+1. Select an unblocked process p
+2. Remove p, including all request and allocatin edges. 
+3. Repeat steps 1 and 2 until either:
+ a.) you have an empty graph (completely reducible)
+ b.) you are only left with blocked processes (deadlocked state)
+
+----------------------------------------------------
+
+General Graph Reduction:
+
+Formally, a graph may be reduced by a non-isolated node representing an unblocked process Pi using the following steps:
+1. For ea. resource delete all request edges...
+
+
+-----------------------------------------------------
+
+Expediency: 
+
+One resource allocation policy that requires that all satisfiable
+resource requests are granted instantly.
+
+-> in an expedient system, all processes requesting resources are blocked. 
+
+-----------------------------------------------------
+
+Cycles and Knots:
+
+A deadlock guarantees a cycle BUT NOT VICE-VERSA
+A knot is not a necessary condition for a deadlock!
+Deadlock does not imply a knot. 
+
+-----------------------------------------------------
+
+Special Scenarios:
+
+Single-Unit Resource:
+- ex: a single printer, multiple PCs
+- In this case, a cycle CAN guarantee a deadlock because if
+one process hogs the resource and never releases it, the sequence of 
+processes lined up to use that resource will never get it, leading to
+starvation and deadlock.
+
+Single-Unit Request:
+- Only one request allowed at a time per resource
+- Different since we are now blocked on requests rather than resources 
 
