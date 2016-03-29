@@ -1,0 +1,30 @@
+// Notes on Deadlocks and Resource Graphs 
+
+Resource Graph G(V,E): 
+
+- V: set of vertices (nodes)
+ - Resource node
+ - Process node
+- E: set of edges 
+ - Request edge
+ - Assignment edge
+ - Producer edge 
+--------------------------------------
+State Transitions:
+
+When P1 requests 1 resource, we draw one edge. One edge per requested 
+resource 
+
+------------------------------------------
+
+Request and Acquisitions :
+
+1. Requests -> Any process, P_i that has no outstanding requests 
+currently (i.e. not blocked) in a given state may request units of any 
+number of resources R_j, R_k,...
+
+2. Acquisition-> A process P_i may ACQUIRE resources that have previously been 
+requested units are available for acquistion.
+
+
+
