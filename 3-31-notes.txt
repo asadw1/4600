@@ -1,0 +1,72 @@
+// 3 - 31 notes, CSCE 4600
+
+Deadlocks cont'd- 
+
+Ultimate goal: able to recover with the least cost incurred, i.e 
+don't arbitrarily always kill the lowest priority process because it 
+could have been doing work for a long time. 
+
+Process interleaving: processes that are highly interdependent; restarting 
+is not without its side effects. 
+
+Resource Preemption: 
+
+Resource Preemption takes away a contested resource from one or 
+more processes thereby allowing others to execute. 
+
+1. Direct Preemption: system temporarily deallocates the resource and allows other proceses to use it. 
+-> only a few resources can be handled this way transparently. 
+
+2. Process Rollback: The system indirectly prreempts (interrupts) resources by 
+rolling back processes. 
+>> Must maintain process checkpoints 
+>> Advantage of checkppoints: implicit fault tolerance; i.e. a crash does not wipe out all the work as we go back to the last checkpoint.
+>> However rollback can involve multiple processes resulting in a cascading rollback which can be costly. 
+
+----------------------------------------------
+
+Deadlock Avoidance: 
+
+Basic Idea: 
+- Delay resource acquisition for requests that may cause deadlock
+- Use addt'l info about future requests a process may make (anticipate it). 
+- Disadvtanges of this approach: Overhead due to anticipatory nature of the system, and performance hit due to this.
+- Possible solution? Flags/thresholds in place that trigger when something critical happens; this solves the problem of implementing >9000 rules in advance. 
+
+------------------------------------------------
+
+Maximum Claim
+
+The max resouce claim of a process is a conservative projection into the future. 
+Max resource claim can be represented by an extended version of the general resource graph (GRG). 
+Extend the GRG: 
+- Processes (P) and Resources (R)
+- Request Edges [solid]
+- Assignment Edges [solid]
+- Potential Request Edges [dashed] **new addition to the resource graph**
+
+Max Claim Graph (MCG) Properties:
+- Shows all possible resource requests, current and future 
+- Number of edges between processes and resouces remains the same throughout execution. 
+
+Banker's Algorithm: 
+
+The Banker's algorithm is run by the operating system whenever a process
+requests resources.[2] The algorithm prevents deadlock by denying or
+postponing the request if it determines that accepting the request could put the
+system in an unsafe state (one where deadlock could occur). When a new
+process enters a system, it must declare the maximum number of instances of
+each resource type that may not exceed the total number of resources in the
+system.
+
+Resources
+For the Banker's algorithm to work, it needs to know three things:
+- How much of each resource each process could possibly request
+- How much of each resource each process is currently holding
+- How much of each resource the system has available
+
+Some of the resources that are tracked in real systems are memory, semaphores
+and interface access.
+
+
+

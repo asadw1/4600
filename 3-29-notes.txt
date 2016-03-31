@@ -68,7 +68,7 @@ One resource allocation policy that requires that all satisfiable
 resource requests are granted instantly.
 
 -> in an expedient system, all processes requesting resources are blocked. 
-
+-> As soon as a resource is available, it is consumed. No extras.
 -----------------------------------------------------
 
 Cycles and Knots:
@@ -91,4 +91,10 @@ starvation and deadlock.
 Single-Unit Request:
 - Only one request allowed at a time per resource
 - Different since we are now blocked on requests rather than resources 
+
+-------------------------------------------------------
+
+Reusable Resources Only: 
+
+- NOTE: All graphs only represent a single STATE of a system. 
 
